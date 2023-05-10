@@ -32,3 +32,5 @@ busdata = pd.read_csv(r'/home/dodonpachi85/Downloads/business-price-indexes-sept
 unique_df = df.Series_title_2.unique()
 print(unique_df)
 
+# Project uploaded to Git for the first time
+
