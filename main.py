@@ -37,3 +37,25 @@ print(unique_df)
 print("***************************************************************************************************")
 # Project uploaded to Git for the first time
 
+# Let's try a left join. We'll use a bit of a simpler dataset for this
+# Create two separate tables that can be joined together
+
+py.random.seed(0)
+# transactions
+left_df = pd.DataFrame({'transaction_id': ['A', 'B', 'C', 'D'],
+                       'user_id': ['Peter', 'John', 'John', 'Anna'],
+                       'value': py.random.randn(4),
+                      })
+# users
+right_df = pd.DataFrame({'user_id': ['Paul', 'Mary', 'John',
+                                     'Anna'],
+                        'favorite_color': ['blue', 'blue', 'red',
+                                           py.NaN],
+                       })
+# left join user_id
+left_joined = left_df.merge(right_df.rename({'user_id': 'user_id_r'}, axis=1),
+               left_on='user_id', right_on='user_id_r', how='left')
+
+# output resulting dataset
+left_joined.to_csv('./test-files/left_joined.csv')
+
